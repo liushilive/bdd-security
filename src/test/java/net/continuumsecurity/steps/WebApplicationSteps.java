@@ -112,7 +112,7 @@ public class WebApplicationSteps {
         openLoginPage();
     }
 
-    @When("the user logs in")
+    @When("^the user logs in$")
     public void loginWithSetCredentials() {
         assert World.getInstance().getCredentials() != null;
         ((ILogin) app).login(World.getInstance().getCredentials());
@@ -207,6 +207,7 @@ public class WebApplicationSteps {
     public LoggingProxy getProxy() {
         if (proxy == null)
             proxy = new ZAProxyScanner(Config.getInstance().getProxyHost(), Config.getInstance().getProxyPort(), Config.getInstance().getProxyApi());
+            proxy.setAttackMode();
         return proxy;
     }
 
@@ -401,13 +402,12 @@ public class WebApplicationSteps {
         assertThat("User: " + credentials.getUsername() + " could access resource: " + methodName + " because the text: [" + sensitiveData + "] was present in the responses", accessible, equalTo(true));
     }
 
-
-    @Given("^the username (.*)$")
+    @Given("^the username (.*) is used$")
     public void setUsernameFromExamples(String username) {
         World.getInstance().getUserPassCredentials().setUsername(username);
     }
 
-    @Given("^the password (.*)$")
+    @Given("^the password (.*) is used$")
     public void setCredentialsFromExamples(String password) {
         World.getInstance().getUserPassCredentials().setPassword(password);
     }
@@ -479,8 +479,8 @@ public class WebApplicationSteps {
                     e.printStackTrace();
                     throw new RuntimeException("Could not copy Har request");
                 }
-                List<HarEntry> results = getProxy().makeRequest(manual, true);
-                results = getProxy().findInResponseHistory(sensitiveData);
+                getProxy().makeRequest(manual, false); //TODO change this to true once ZAP bug is fixed
+                List<HarEntry> results = getProxy().findInResponseHistory(sensitiveData);
                 accessible = results != null && results.size() > 0;
                 if (accessible) break;
             }

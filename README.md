@@ -1,7 +1,7 @@
 
-![](http://www.continuumsecurity.net/images/bdd-security-logo-small.png) 
+![](https://www.continuumsecurity.net/wp-content/uploads/2016/10/bdd-security160.png) 
 
-Powered by <img src="https://cucumber.io/images/cucumber-logo.svg" width="200"/>
+<img src="https://github.com/cucumber-ltd/brand/blob/master/images/svg/tm/cucumber-compatible-black.svg" width="300"/>
 
 BDD-Security is a security testing framework that uses Behaviour Driven Development concepts to create self-verifying security specifications.
 
@@ -10,6 +10,11 @@ The framework is essentially a set of Cucumber-JVM features that are pre-wired w
 It tests Web Applications and API's from an external point of view and does not require access to the target source code.
 
 [Documentation on the Wiki](https://github.com/continuumsecurity/bdd-security/wiki)
+
+## Version 2.2 Changelog
+- Upgraded to OWASP ZAP 2.6.0
+- Upgraded ZAP Client API to 1.2.0 from maven central
+- Corrected bugs with ambiguous step definitions
 
 ## Version 2.1 Changelog
 - Upgraded to OWASP ZAP 2.5.0
@@ -29,7 +34,7 @@ Legacy JBehave version is available on the jbehave branch
 
 ## v0.9.1 Changelog
 - HtmlUnitDriver support, it is also the default driver if no other driver is specified in config.xml.  BIG speed improvements.
-- Support for testing non-browser based web services and APIs.  See the [getting started guide](http://www.continuumsecurity.net/bdd-getstarted.html#httpclient) for more details.
+- Support for testing non-browser based web services and APIs.  See the [getting started guide](https://github.com/continuumsecurity/bdd-security/wiki/2-Getting-Started) for more details.
 - Removed all TestNG tests.
 
 ## v0.9 Changelog
